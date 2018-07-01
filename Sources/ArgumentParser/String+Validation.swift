@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    
+
     /// Check is the String is a valid command.
     /// *Validation*: [All alphanumeric caracters]
     var isValidCommand: Bool {
@@ -20,11 +20,5 @@ extension String {
     /// *Validation*: -(-)[All alphanumeric caracters]
     var isValidOption: Bool {
         return range(of: "^-{1,2}[a-z0-9]+$", options: .regularExpression, range: nil, locale: nil) != nil
-    }
-    
-    /// Checks if a string is a valid option with value.
-    /// *Validation*: --[All alphanumeric caracters]=[All alphanumeric caracters]
-    var isValidOptionWithValue: Bool {
-        return range(of: "^-{1,2}[a-z0-9]+=[a-z0-9]+$", options: .regularExpression, range: nil, locale: nil) != nil
     }
 }
