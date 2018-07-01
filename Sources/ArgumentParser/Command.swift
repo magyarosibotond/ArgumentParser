@@ -12,7 +12,7 @@ public class Command: Container {
     let name: String
     let description: String
     
-    internal var subcommands: [Command] = []
+    internal var commands: [Command] = []
     internal var parameters: [Parameter] = []
     internal var options: [Option] = []
     
@@ -29,7 +29,7 @@ infix operator <~
 extension Command {
     
     static func <~ (lhs: Command, rhs: Command) -> Command {
-        lhs.subcommands.append(rhs)
+        lhs.commands.append(rhs)
         return lhs
     }
     

@@ -15,5 +15,4 @@ indirect enum ParsingResult: Equatable {
 
 enum OptionResult: Equatable {
     case option(String)
-    case valueOption(String, String)
 }

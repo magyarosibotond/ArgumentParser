@@ -10,7 +10,6 @@ import Foundation
 public struct Option {
     let name: String
     let shortName: String?
-//    var type: ArgumentValue? { get }
     let description: String
     
     init(name: String, shortName: String?, description: String) {

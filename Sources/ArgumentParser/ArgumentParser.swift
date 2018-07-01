@@ -4,7 +4,7 @@ enum ArgumentParseError: Error {
 }
 
 protocol Container {
-    var subcommands: [Command] { get set }
+    var commands: [Command] { get set }
     var parameters: [Parameter]  { get set }
     var options: [Option] { get set }
 }
@@ -15,7 +15,7 @@ public class ArgumentParser: Container {
     private let arguments: [String]
     
     /// Holds the list of possible commands.
-    internal var subcommands: [Command] = []
+    internal var commands: [Command] = []
     internal var parameters: [Parameter] = []
     internal var options: [Option] = []
     
@@ -35,7 +35,7 @@ public class ArgumentParser: Container {
         
         while let firstArgument = arguments.first {
             if firstArgument.isValidCommand,
-                let command = container.subcommands.first(where: { $0.name == firstArgument }) {
+                let command = container.commands.first(where: { $0.name == firstArgument }) {
                 return ParsingResult.command(command.name, try ArgumentParser(arguments: Array(arguments.dropFirst())).parse())
             } else if firstArgument.isValidOptionWithValue {
                 options.append(try getOptionResult(argument: firstArgument))
@@ -71,7 +71,7 @@ public class ArgumentParser: Container {
 public extension ArgumentParser {
 
     func add(_ command: Command) {
-        subcommands.append(command)
+        commands.append(command)
     }
     
     func add(_ parameter: Parameter) {
