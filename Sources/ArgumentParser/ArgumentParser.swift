@@ -1,3 +1,9 @@
+//
+//  ArgumentParser.swift
+//  ArgumentParser
+//
+//  Created by Botond Magyarosi on 20/06/2018.
+//
 
 public class ArgumentParser: Container {
 
@@ -41,7 +47,7 @@ public class ArgumentParser: Container {
     func parse() throws -> ParsingResult {
         var arguments = self.arguments
         var container: Container = self
-        
+
         var options: [OptionResult] = []
         var parameters: [String] = []
         
@@ -86,7 +92,9 @@ public class ArgumentParser: Container {
 
             if parameterArguments.count >= container.parameters.count {
                 try parameterArguments.forEach {
-                    if $0.isValidOption { throw ArgumentParseError.invalidOption($0) }
+                    if $0.isValidOption {
+                        throw ArgumentParseError.invalidOption($0)
+                    }
                 }
                 parameters = parameterArguments
             } else {

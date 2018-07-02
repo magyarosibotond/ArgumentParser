@@ -6,7 +6,7 @@ final class ArgumentParserTests: XCTestCase {
     func testNoCommandNoOption() {
         let arguments: [String] = []
         let parser = ArgumentParser(arguments: arguments)
-        
+
         do {
             let result = try parser.parse()
 
@@ -17,12 +17,12 @@ final class ArgumentParserTests: XCTestCase {
             XCTFail("Failed: \(error.localizedDescription)")
         }
     }
-    
+
     func testNoCommandSimpleOption() {
         let arguments: [String] = ["--verbose"]
         let parser = ArgumentParser(arguments: arguments)
         parser.add(Option(name: "verbose", shortName: nil, description: "Verbose execution."))
-        
+
         do {
             let result = try parser.parse()
             
@@ -58,7 +58,6 @@ final class ArgumentParserTests: XCTestCase {
                 <~ Option(name: "verbose", shortName: nil, description: "Verbose execution.")
         )
         
-        
         do {
             let result = try parser.parse()
             
@@ -68,10 +67,11 @@ final class ArgumentParserTests: XCTestCase {
             XCTFail("Failed: \(error.localizedDescription)")
         }
     }
-    
-    
+
     static var allTests = [
         ("testNoCommandNoOption", testNoCommandNoOption),
-        ("testNoCommandSimpleOption", testNoCommandSimpleOption)
+        ("testNoCommandSimpleOption", testNoCommandSimpleOption),
+        ("testSimpleCommand", testSimpleCommand),
+        ("testSimpleCommandWithNestedOption", testSimpleCommandWithNestedOption)
     ]
 }

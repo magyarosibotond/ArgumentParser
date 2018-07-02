@@ -17,7 +17,7 @@ public enum ArgumentParseError: Error {
 // MARK: - LocalizedError
 
 extension ArgumentParseError: LocalizedError {
-    
+
     public var errorDescription: String? {
         switch self {
         case .invalidOption(let option):
