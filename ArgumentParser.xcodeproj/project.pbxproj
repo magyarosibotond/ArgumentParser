@@ -21,11 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		F96F3EB220D9C16D00CA4317 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3EB120D9C16D00CA4317 /* Option.swift */; };
-		F96F3EB420D9C34300CA4317 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3EB320D9C34300CA4317 /* Command.swift */; };
-		F96F3EB620D9C44D00CA4317 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3EB520D9C44D00CA4317 /* Parameter.swift */; };
 		F96F3EB820D9C4DB00CA4317 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3EB720D9C4DB00CA4317 /* String+Validation.swift */; };
 		F9B7B0A120DAF5D700DF5258 /* ParsingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7B0A020DAF5D700DF5258 /* ParsingResult.swift */; };
+		F9DA02C020E91B0A006B201E /* ArgumentParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA02BF20E91B0A006B201E /* ArgumentParseError.swift */; };
+		F9DA02C520E91B4E006B201E /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA02C220E91B4E006B201E /* Option.swift */; };
+		F9DA02C620E91B4E006B201E /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA02C320E91B4E006B201E /* Parameter.swift */; };
+		F9DA02C720E91B4E006B201E /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA02C420E91B4E006B201E /* Command.swift */; };
+		F9DA02C920E91B62006B201E /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA02C820E91B62006B201E /* Container.swift */; };
 		OBJ_22 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ArgumentParser.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* ArgumentParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ArgumentParserTests.swift */; };
@@ -53,11 +55,13 @@
 /* Begin PBXFileReference section */
 		"ArgumentParser::ArgumentParser::Product" /* ArgumentParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArgumentParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"ArgumentParser::ArgumentParserTests::Product" /* ArgumentParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ArgumentParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F96F3EB120D9C16D00CA4317 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		F96F3EB320D9C34300CA4317 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		F96F3EB520D9C44D00CA4317 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		F96F3EB720D9C4DB00CA4317 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		F9B7B0A020DAF5D700DF5258 /* ParsingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingResult.swift; sourceTree = "<group>"; };
+		F9DA02BF20E91B0A006B201E /* ArgumentParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParseError.swift; sourceTree = "<group>"; };
+		F9DA02C220E91B4E006B201E /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		F9DA02C320E91B4E006B201E /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		F9DA02C420E91B4E006B201E /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		F9DA02C820E91B62006B201E /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		OBJ_12 /* ArgumentParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParserTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -88,6 +92,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9DA02BE20E91AF7006B201E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA02BF20E91B0A006B201E /* ArgumentParseError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		F9DA02C120E91B37006B201E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA02C820E91B62006B201E /* Container.swift */,
+				F9DA02C420E91B4E006B201E /* Command.swift */,
+				F9DA02C220E91B4E006B201E /* Option.swift */,
+				F9DA02C320E91B4E006B201E /* Parameter.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Tests */ = {
@@ -139,10 +162,9 @@
 		OBJ_8 /* ArgumentParser */ = {
 			isa = PBXGroup;
 			children = (
+				F9DA02C120E91B37006B201E /* Configuration */,
+				F9DA02BE20E91AF7006B201E /* Error */,
 				OBJ_9 /* ArgumentParser.swift */,
-				F96F3EB120D9C16D00CA4317 /* Option.swift */,
-				F96F3EB320D9C34300CA4317 /* Command.swift */,
-				F96F3EB520D9C44D00CA4317 /* Parameter.swift */,
 				F96F3EB720D9C4DB00CA4317 /* String+Validation.swift */,
 				F9B7B0A020DAF5D700DF5258 /* ParsingResult.swift */,
 			);
@@ -236,9 +258,11 @@
 			files = (
 				OBJ_22 /* ArgumentParser.swift in Sources */,
 				F96F3EB820D9C4DB00CA4317 /* String+Validation.swift in Sources */,
-				F96F3EB220D9C16D00CA4317 /* Option.swift in Sources */,
-				F96F3EB420D9C34300CA4317 /* Command.swift in Sources */,
-				F96F3EB620D9C44D00CA4317 /* Parameter.swift in Sources */,
+				F9DA02C520E91B4E006B201E /* Option.swift in Sources */,
+				F9DA02C620E91B4E006B201E /* Parameter.swift in Sources */,
+				F9DA02C720E91B4E006B201E /* Command.swift in Sources */,
+				F9DA02C920E91B62006B201E /* Container.swift in Sources */,
+				F9DA02C020E91B0A006B201E /* ArgumentParseError.swift in Sources */,
 				F9B7B0A120DAF5D700DF5258 /* ParsingResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
