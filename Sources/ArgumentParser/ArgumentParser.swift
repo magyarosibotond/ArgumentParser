@@ -47,37 +47,36 @@ public class ArgumentParser: Container {
         
         // Parse options defined on this level.
         
-        let validOptions = arguments.filter { argument in
-            container.options.contains {
-                if "--\($0.name)" == argument {
+        var remainder: [String] = []
+        arguments.forEach { argument in
+            let option = container.options.first(where: { option -> Bool in
+                if "--\(option.name)" == argument {
                     return true
-                } else if let shortName = $0.shortName, "-\(shortName)" == argument {
+                } else if let shortName = option.shortName, "-\(shortName)" == argument {
                     return true
                 }
                 return false
+            })
+            
+            if let option = option {
+                options.append(OptionResult.option(option.name))
+            } else {
+                remainder.append(argument)
             }
         }
-        
-        // TODO: Remove code duplocation
-        arguments = Array(arguments.drop { argument -> Bool in
-            container.options.contains {
-                if "--\($0.name)" == argument {
-                    return true
-                } else if let shortName = $0.shortName, "-\(shortName)" == argument {
-                    return true
-                }
-                return false
-            }
-        })
-        
-        options += validOptions.map { OptionResult.option($0) }
+
+        arguments = remainder
         
         // Check for subcommand
         
         if let argument = arguments.first,
             argument.isValidCommand,
             let command = container.commands.first(where: { $0.name == argument }) {
-            return ParsingResult.command(command.name, try ArgumentParser(arguments: Array(arguments.dropFirst())).parse())
+            let subparser = ArgumentParser(arguments: Array(arguments.dropFirst()),
+                                                            commands: command.commands,
+                                                            parameters: command.parameters,
+                                                            options: command.options)
+            return ParsingResult.command(command.name, try subparser.parse())
         }
         
         // check for parameters

@@ -58,6 +58,7 @@ final class ArgumentParserTests: XCTestCase {
                 <~ Option(name: "verbose", shortName: nil, description: "Verbose execution.")
         )
         
+        
         do {
             let result = try parser.parse()
             
