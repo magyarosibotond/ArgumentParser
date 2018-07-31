@@ -16,8 +16,8 @@ public class Command: Container {
     internal var parameters: [Parameter] = []
     internal var options: [Option] = []
 
-    init(name: String, description: String) {
-        assert(name.isValidCommand, "\(name) is not a vlaid command")
+    public init(name: String, description: String) {
+        assert(name.isValidCommand, "\(name) is not a valid command")
         self.name = name
         self.description = description
     }
@@ -25,20 +25,25 @@ public class Command: Container {
 
 // MARK: - Command addition operator
 
-infix operator <~
-extension Command {
+precedencegroup CommandNestingPrecendence {
+    associativity: left
+    higherThan: LogicalConjunctionPrecedence
+}
+infix operator <~ : CommandNestingPrecendence
 
-    static func <~ (lhs: Command, rhs: Command) -> Command {
+public extension Command {
+
+    public static func <~ (lhs: Command, rhs: Command) -> Command {
         lhs.commands.append(rhs)
         return lhs
     }
 
-    static func <~ (lhs: Command, rhs: Parameter) -> Command {
+    public static func <~ (lhs: Command, rhs: Parameter) -> Command {
         lhs.parameters.append(rhs)
         return lhs
     }
 
-    static func <~ (lhs: Command, rhs: Option) -> Command {
+    public static func <~ (lhs: Command, rhs: Option) -> Command {
         lhs.options.append(rhs)
         return lhs
     }
