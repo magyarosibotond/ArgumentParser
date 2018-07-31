@@ -7,12 +7,12 @@
 
 import Foundation
 
-indirect enum ParsingResult: Equatable {
+public indirect enum ParsingResult: Equatable {
     case command(String, ParsingResult)
     case arguments(parameters: [String], options: [OptionResult])
     case empty
 }
 
-enum OptionResult: Equatable {
+public enum OptionResult: Equatable {
     case option(String)
 }

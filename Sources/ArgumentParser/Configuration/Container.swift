@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Container {
+internal protocol Container {
     var commands: [Command] { get set }
     var parameters: [Parameter]  { get set }
     var options: [Option] { get set }

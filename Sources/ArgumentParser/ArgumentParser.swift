@@ -18,7 +18,7 @@ public class ArgumentParser: Container {
     /// Initialize with the list command line argumernts.
     ///
     /// - Parameter arguments: list of arguments
-    convenience init(arguments: [String]) {
+    public convenience init(arguments: [String]) {
         self.init(arguments: arguments, commands: [], parameters: [], options: [])
     }
     
@@ -44,7 +44,7 @@ public class ArgumentParser: Container {
     ///
     /// - Returns: A ParsingResult object.
     /// - Throws: ArgumentParseError if an error is present.
-    func parse() throws -> ParsingResult {
+    public func parse() throws -> ParsingResult {
         var arguments = self.arguments
         var container: Container = self
 
